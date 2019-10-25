@@ -1,9 +1,8 @@
 require('dotenv').config();
 const express = require('express');
 const massive = require('massive');
-const axios = require('axios');
 const {CONNECTION_STRING} = process.env;
-const {} = require('./controller');
+const {getHouses, createHouses, deleteHouses} = require('./controller');
 
 const app = express();
 
@@ -16,6 +15,9 @@ massive(CONNECTION_STRING)
         console.log(err);
     })
 
-app.use(express.json);
+app.use(express.json());
+app.get('/api/houses', getHouses)
+app.post('/api/house', createHouses)
+app.delete('api/house/:id', deleteHouses)
 
 app.listen(8787, () => console.log('Running on Port 8787'));

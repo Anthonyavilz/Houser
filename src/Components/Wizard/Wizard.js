@@ -1,8 +1,9 @@
 import React from 'react';
+import Axios from 'axios';
 
 class Wizard extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             name: '',
             address: '',
@@ -10,6 +11,7 @@ class Wizard extends React.Component {
             state: '',
             zipcode: 0
         }
+        this.complete = this.complete.bind(this);
     }
 
     handleNameChange = e => {
@@ -32,6 +34,13 @@ class Wizard extends React.Component {
         this.setState({zipcode: e.target.value})
     }
 
+    complete() {
+        Axios.post('/api/house', this.state)
+        .then(() => {
+            this.props.history.push('/')
+        })
+    }
+
     render() {
         return(
             <div>
@@ -41,6 +50,7 @@ class Wizard extends React.Component {
                 <input type="text" placeholder='City' value={this.state.city} onChange={this.handleCityChange} ></input>
                 <input type="text" placeholder='State' value={this.state.state} onChange={this.handleStateChange} ></input>
                 <input type="number" placeholde='Zip-Code' value={this.state.zipcode} onChange={this.handleZipcodeChange}></input>
+                <button onClick={() => this.complete} >Complete</button>
             </div>
         )
     }
