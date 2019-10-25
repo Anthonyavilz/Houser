@@ -1,6 +1,6 @@
 import React from 'react';
-import Dashboard from './Components/Dashboard/Dashboard';
-import Wizard from './Components/Wizard/Wizard';
+import {HashRouter} from 'react-router-dom';
+import routes from './routes';
 import Header from './Components/Header/Header';
 
 class App extends React.Component {
@@ -13,11 +13,12 @@ class App extends React.Component {
 
   render() {
     return(
+      <HashRouter>
       <div>
-        <Dashboard />
-        <Wizard />
         <Header />
+        {routes}
       </div>
+      </HashRouter>
     )
   }
 }

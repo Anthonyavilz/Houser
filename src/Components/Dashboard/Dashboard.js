@@ -12,7 +12,7 @@ class Dashboard extends React.Component {
     render() {
         return(
             <div>
-                Wizard
+                <button onClick={() => this.props.history.push('/wizard')} >Add New Property</button>
                 <House />
             </div>
         )
