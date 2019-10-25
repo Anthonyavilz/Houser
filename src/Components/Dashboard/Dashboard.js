@@ -30,7 +30,7 @@ class Dashboard extends React.Component {
     }
 
     deleteHouse(id) {
-        Axios.delete(`/api/house/${id}`)
+        Axios.delete(`/api/houses/${id}`)
             .then(res => this.getHouses())
     }
 

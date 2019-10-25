@@ -17,7 +17,7 @@ massive(CONNECTION_STRING)
 
 app.use(express.json());
 app.get('/api/houses', getHouses)
-app.post('/api/house', createHouses)
-app.delete('api/house/:id', deleteHouses)
+app.post('/api/houses', createHouses)
+app.delete('/api/houses/:id', deleteHouses)
 
 app.listen(8787, () => console.log('Running on Port 8787'));
